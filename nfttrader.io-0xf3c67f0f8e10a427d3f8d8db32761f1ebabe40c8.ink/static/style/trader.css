@@ -1,0 +1,380 @@
+body {
+    background-color: #ebebeb;
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+.w3modal {
+    width: 400px;
+    background-color: rgb(39, 49, 56);
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.w3modal-providerName {
+    font-family: ftBk;
+    width: 100%;
+    font-size: 24px;
+    margin-top: 0.5em;
+    color: rgb(199,199,199);
+}
+
+.w3modal-providerDescription {
+    font-family: ftBk;
+    font-weight: 100;
+    font-size: 18px;
+    color: rgb(136, 136, 136);
+}
+
+.w3modal-image {
+    width: 60px;
+    height: 60px;
+}
+
+.w3modal-provider {
+    border-radius: 12px;
+    padding: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition-duration: .25s;
+}
+
+.w3modal-provider:hover {
+    background-color: rgb(28, 35, 41);  
+}
+
+.w3modal-line {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(47, 59, 71);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-navigation {
+    width: 100%;
+    background-color: black;
+    height: 30px;
+}
+
+.social-icon {
+    height: 24px;
+    padding-top: 3px;
+    padding-left: 20px;
+}
+
+.nav-greenlink {
+    font-family: ftThn;
+    color: #67f475;
+    float: right;
+    padding-top: 4px;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+.secondary-navigation {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.nfttrader-brand {
+    max-height: 40px;
+    display: inline;
+    float: left;
+}
+
+.s-nav-links {
+    width: 60%;
+    font-family: ftBk;
+    float: right;
+    display: inline;
+    padding-right: 40px;
+    padding-top: 10px;
+    border-spacing: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.s-nav-links a {
+    font-family: ftBold;
+    text-decoration: none;
+    color: black !important;
+}
+
+.s-nav-links a:hover {
+    border-bottom: #67f475 solid 3px;
+}
+
+.s-nav-links .selected {
+    border-bottom: #67f475 solid 3px;
+}
+
+.hamburger-icon {
+    height: 24px;
+    display: none;
+    float: right;
+    right: 20px;
+    padding-top: 10px;
+    position: fixed;
+}
+
+.main-content {
+    height: 100vh;
+    overflow-y: auto !important;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    border-top: rgb(199,199,199) solid 1px;
+}
+
+.trade-view {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: block;
+    flex: 50%;
+    border-top: rgb(199,199,199) solid 1px;
+}
+
+.left-col {
+    border-right: rgb(199,199,199) solid 1px;
+}
+
+.h1-underline {
+    font-family: ftBold;
+    font-size: larger;
+    border-bottom: #67f475 solid 3px;
+    color: black;
+    width: fit-content
+}
+
+.col-header {
+    margin-left: 25px;
+    margin-top: 25px;
+    font-family: ftBold;
+    font-weight: 100;
+}
+
+.col-header-group {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.errormodal {
+    color: white;
+    font-family: ftBold;
+    background-color: lightcoral;
+    padding: 15px;
+    border-radius: 10px;
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    z-index: 10;
+    opacity: 0;
+    transition-duration: 1s;
+}
+
+.wallet-information {
+    line-height: 10px;
+    font-size: 13px;
+    gap: 15px;
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 30px;
+}
+
+.wallet-icon {
+    border-radius: 100px;
+    border: 2px black solid;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-lable {
+    color: white;
+    font-weight: 900;
+    background-color: red;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    line-height: 0px;
+}
+
+p {
+    font-family: ftBk;
+    color: black;
+}
+
+.nft-card {
+    width:250px;
+    background-color: white;
+    margin-left: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.337);
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.nft-card img {
+    width: 230px;
+    padding-left:10px;
+    padding-top:10px;
+}
+
+.p-label {
+    font-family: ftMed;
+    font-weight:300;
+    padding-bottom: 8px;
+    margin: 0;
+    padding-left: 10px;
+    font-size: small;
+}
+
+#p-sec {
+    color:rgb(104, 104, 104);
+    font-size: x-small;
+    font-family: ftBold;
+}
+
+.nft-card-label {
+    margin-left: 20px;
+    font-family: ftMed;
+    font-size:large;
+}
+
+.victimEth {
+    background-color: white;
+    width: 95%;
+    margin-left: 2.5%;
+    font-size: 32px;
+    font-family: futuraThn;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(87, 87, 87) !important;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.victimEth i {
+    position: relative;
+    float: right;
+    transform: translate(0px,-20px);
+    color: #a813ef;
+}
+
+.sb-btn-group {
+    position: absolute;
+    bottom: 0px;
+}
+
+.sb-btn-group button {
+    width: 250px;
+    height: 50px;
+    margin-left: 25px;
+    border: 0px;
+    font-family: ftBold;
+    color: white !important;
+    margin-bottom: 25px;
+}
+
+.close-btn {
+    background-color: #ffdb65;
+    color: black;
+}
+
+.close-btn:hover {
+    background-color: #e2c259;
+}
+
+.paynow-btn {
+    background-color: #11f277;
+}
+
+.paynow-btn:hover {
+    background-color: #10d669;
+}
+
+.sidebartogglebtn {
+    width: 15px;
+    height: 15px;
+    padding:20px;
+    border-radius: 100px;
+    background-color:#11f277;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3;
+    position: absolute;
+    
+}
+
+.sidebartogglebtn:hover {
+    background-color: #10d669;
+}
+
+
+.sidebar {
+    background-color: #1d1d1d;
+    width: 300px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    font-family: futuraThn;
+    font-size: small;
+    transition-duration: 2s;
+}
+
+.sidebar p {
+    color: white;
+}
+
+.sb-text {
+    width: 250px !important;
+    overflow-wrap: break-word;
+    margin-left: 25px;
+}
+
+.sb-bold {
+    font-family: ftBold;
+}
+
+.sb-head {
+    font-size: larger;
+}
+
+@media only screen and (max-width: 830px) {
+    .s-nav-links a {
+        display: none;
+    }
+
+    .hamburger-icon {
+        display: block;
+    }
+
+    .trade-view {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .w3modal {
+        width: 80%;
+    }
+}
